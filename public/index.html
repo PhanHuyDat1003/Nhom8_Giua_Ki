@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <div class="start-screen">
+        <h1>🪨 📄 ✂️ Rock Paper Scissors</h1>
+
+        <div class="player-setup" id="player-setup">
+            <div class="player-info">
+                <h3>Player Information</h3>
+                <div class="input-group">
+                    <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+                </div>
+            </div>
+
+            <div class="game-mode">
+                <h3>Game Settings</h3>
+                <div class="mode-options">
+                    <div class="mode-option">
+                        <label for="target-score">Target Score:</label>
+                        <div class="mode-settings" id="score-settings">
+                            <input type="number" id="target-score" placeholder="Target score" min="1" max="50" value="10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gameplay-choices" id="gameplay-choices">
+            <button id="open-create-room-box">Create Room</button>
+            <button id="open-join-room-box">Join Room</button>
+        </div>
+
+        <div class="create-room-box" id="create-room-box">
+            <input type="text" id="room-id" placeholder="Enter room name">
+            <button id="create-room-btn">Create</button>
+            <button id="cancel-create-action" class="cancel-action">Cancel</button>
+        </div>
+
+        <div class="join-room-box" id="join-room-box">
+            <div class="join-with-id">
+                <input type="text" id="join-room-input" placeholder="Enter room ID">
+                <button id="join-room-btn">Join</button>
+                <button id="cancel-join-action" class="cancel-action">Cancel</button>
+            </div>
+            <button class="join-random" id="join-random">Join Random</button>
+        </div>
+
+        <div class="error-message" id="error-message">
+        </div>
+    </div>
+
+    <div class="gameplay-screen">
+        <div class="wait-message" id="wait-message">
+            <div class="loading-spinner"></div>
+            <p>Waiting for another player to join...</p>
+        </div>
+
+        <div class="game-info">
+            <div class="game-mode-display">
+                <span id="current-mode">Mode: Score</span>
+                <span id="game-progress">Target: 10</span>
+            </div>
+        </div>
+
+        <div class="connected-players">
+            <div class="player">
+                <span class="dot" id="player-1"></span> <span id="player-1-tag"></span>
+            </div>
+            <div class="vs">VS</div>
+            <div class="player">
+                <span class="dot" id="player-2"></span> <span id="player-2-tag"></span>
+            </div>
+        </div>
+
+        <div class="score">
+            <span>You: <span id="my-score">0</span></span>
+            <span>Enemy: <span id="enemy-score">0</span></span>
+        </div>
+
+        <div class="choices">
+            <div class="choice" id="rock">
+                <i class="fas fa-hand-rock"></i>
+                <span class="choice-label">Rock</span>
+            </div>
+
+            <div class="choice" id="paper">
+                <i class="fas fa-hand-paper"></i>
+                <span class="choice-label">Paper</span>
+            </div>
+
+            <div class="choice" id="scissor">
+                <i class="fas fa-hand-scissors"></i>
+                <span class="choice-label">Scissors</span>
+            </div>
+        </div>
+
+        <div class="battle-area">
+            <h3>Battle Results</h3>
+            <div class="player-choices">
+                <div class="player-choice" id="my-choice-display">
+                    <div class="choice-icon">
+                        <i class="fas fa-question"></i>
+                    </div>
+                    <span class="player-name">Your Choice</span>
+                </div>
+                <div class="vs-battle">VS</div>
+                <div class="player-choice" id="enemy-choice-display">
+                    <div class="choice-icon">
+                        <i class="fas fa-question"></i>
+                    </div>
+                    <span class="player-name">Enemy Choice</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-after-choice-selection" id="win-message">
+        </div>
+
+        <div class="game-end-screen" id="game-end-screen" style="display: none;">
+            <div class="game-result">
+                <h2 id="final-result">Game Over!</h2>
+                <div class="final-score">
+                    <span id="final-my-score">You: 0</span>
+                    <span id="final-enemy-score">Enemy: 0</span>
+                </div>
+                <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+                <button id="back-to-menu-btn" class="btn btn-secondary">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
