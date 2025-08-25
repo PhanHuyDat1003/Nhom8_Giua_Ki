@@ -756,3 +756,8 @@ body {
         gap: 15px;
     }
 }
+
+#chessboard {
+  width: min(90vmin, 600px); 
+  height: min(90vmin, 600px);
+}
